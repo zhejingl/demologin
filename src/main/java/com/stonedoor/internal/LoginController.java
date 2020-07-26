@@ -25,7 +25,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 public class LoginController {
 	
 	private String SECRET = "SDGDemoLogin";
-	@RequestMapping(value="/v1/api/sdg/demo/login", method=RequestMethod.POST ,consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/v1/api/demo/social/login", method=RequestMethod.POST ,consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<LoginReturn> login(@RequestBody LoginData login) throws Exception {
 		String token = JWT.create().withSubject(login.getUser())

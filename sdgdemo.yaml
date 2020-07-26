@@ -1,0 +1,53 @@
+##################################################################################################
+# Details service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: demologin
+  labels:
+    app: demologin
+    service: demologin
+spec:
+  ports:
+  - port: 9080
+    name: http
+  selector:
+    app: demologin
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sdgsocialdemo-demologin
+  labels:
+    account: demologin
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demologin-v1
+  labels:
+    app: demologin
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demologin
+      version: v1
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      labels:
+        app: demologin
+        version: v1
+    spec:
+      serviceAccountName: sdgsocialdemo-demologin
+      containers:
+      - name: demologin
+        image: zhejingl/demologin:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+---
