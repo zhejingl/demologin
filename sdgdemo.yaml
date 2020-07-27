@@ -46,7 +46,7 @@ spec:
       serviceAccountName: sdgsocialdemo-demologin
       containers:
       - name: demologin
-        image: zhejingl/demologin:latest
+        image: zhejingl/demologin:prod
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
