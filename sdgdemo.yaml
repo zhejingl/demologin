@@ -10,7 +10,7 @@ metadata:
     service: demologin
 spec:
   ports:
-  - port: 9080
+  - port: 8080
     name: http
   selector:
     app: demologin
@@ -49,5 +49,5 @@ spec:
         image: zhejingl/demologin:latest
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 9080
+        - containerPort: 8080
 ---
