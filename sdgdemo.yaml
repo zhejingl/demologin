@@ -47,7 +47,7 @@ spec:
       containers:
       - name: demologin
         image: zhejingl/demologin:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
 ---
